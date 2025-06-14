@@ -1,0 +1,359 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+    background: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* استایل هدر */
+header {
+    background: linear-gradient(135deg, #1a2a6c, #2b5876);
+    padding: 1rem 5%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo i {
+    margin-left: 10px;
+    font-size: 1.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+}
+
+.nav-item {
+    position: relative;
+    margin: 0 0.5rem;
+}
+
+.nav-link {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+
+.nav-link:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+}
+
+.nav-link i {
+    margin-left: 8px;
+    font-size: 1.1rem;
+}
+
+.dropdown-icon {
+    margin-right: 8px;
+    font-size: 0.9rem;
+    transition: transform 0.3s;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    min-width: 240px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 100;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-item {
+    padding: 12px 20px;
+    display: block;
+    color: #444;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 0.95rem;
+}
+
+.dropdown-item:hover {
+    background: #f8f9ff;
+    color: #1a2a6c;
+    padding-right: 25px;
+}
+
+.dropdown-item i {
+    margin-left: 10px;
+    color: #1a2a6c;
+    width: 20px;
+    text-align: center;
+}
+
+.dropdown-header {
+    padding: 10px 20px;
+    background: #f0f5ff;
+    color: #1a2a6c;
+    font-weight: 600;
+    border-bottom: 1px solid #dde4f0;
+    font-size: 1rem;
+}
+
+.dropdown-subheader {
+    padding: 8px 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-subheader i {
+    margin-left: 8px;
+}
+
+.bg-blue {
+    background: #e3f2fd;
+    color: #0d47a1;
+    border-bottom: 1px solid #bbdefb;
+}
+
+.bg-orange {
+    background: #fff8e1;
+    color: #f57f17;
+    border-bottom: 1px solid #ffecb3;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 8px 10px;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+/* استایل محتوا */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+    flex: 1;
+}
+
+h1 {
+    color: #1a2a6c;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.page-content {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-top: 1rem;
+}
+
+.placeholder {
+    text-align: center;
+    padding: 2rem;
+    color: #555;
+}
+
+.placeholder i {
+    font-size: 4rem;
+    color: #1a2a6c;
+    margin-bottom: 1rem;
+}
+
+.placeholder h2 {
+    color: #1a2a6c;
+    margin-bottom: 1rem;
+}
+
+/* استایل فوتر */
+.site-footer {
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 40px 0 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 300px;
+    margin-bottom: 30px;
+    padding: 0 15px;
+}
+
+.footer-section h3 {
+    color: #1abc9c;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.footer-section p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #34495e;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    transition: all 0.3s;
+}
+
+.social-icons a:hover {
+    background: #1abc9c;
+    transform: translateY(-3px);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-section a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.footer-section a:hover {
+    color: #1abc9c;
+}
+
+.footer-section i {
+    margin-left: 10px;
+    width: 20px;
+    color: #1abc9c;
+}
+
+.footer-bottom {
+    background: #1a252f;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+/* اضافه شده برای زیرمنوهای جدید */
+.dropdown-subheader {
+    padding: 8px 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-subheader i {
+    margin-left: 8px;
+}
+
+.bg-blue {
+    background: #e3f2fd;
+    color: #0d47a1;
+    border-bottom: 1px solid #bbdefb;
+}
+
+.bg-orange {
+    background: #fff8e1;
+    color: #f57f17;
+    border-bottom: 1px solid #ffecb3;
+}
+
+/* برای منوهای آبشاری بزرگ‌تر */
+.dropdown-menu {
+    min-width: 280px; /* افزایش عرض برای منوهای بزرگ */
+    max-height: 80vh; /* حداکثر ارتفاع */
+    overflow-y: auto; /* اسکرول در صورت نیاز */
+}
+
+/* استایل آیتم‌ها در حالت موبایل */
+@media (max-width: 992px) {
+    .dropdown-subheader {
+        background: rgba(0,0,0,0.15) !important;
+        color: white !important;
+        margin-top: 5px;
+    }
+    
+    .dropdown-menu {
+        max-height: 50vh;
+    }
+}

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کام اسپرت | منوی کامل رژیم و تغذیه</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+        
+        body {
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #2b5876);
+            padding: 1rem 5%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-left: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            position: relative;
+            margin: 0 0.5rem;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .nav-link i {
+            margin-left: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .dropdown-icon {
+            margin-right: 8px;
+            font-size: 0.9rem;
+            transition: transform 0.3s;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            min-width: 280px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 100;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .nav-item:hover .dropdown-menu,
+        .nav-item.dropdown-active .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-item {
+            padding: 12px 20px;
+            display: block;
+            color: #444;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #f1f1f1;
+            font-size: 0.95rem;
+        }
+        
+        .dropdown-item:hover {
+            background: #f8f9ff;
+            color: #1a2a6c;
+            padding-right: 25px;
+        }
+        
+        .dropdown-item i {
+            margin-left: 10px;
+            color: #1a2a6c;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .dropdown-header {
+            padding: 10px 20px;
+            background: #f0f5ff;
+            color: #1a2a6c;
+            font-weight: 600;
+            border-bottom: 1px solid #dde4f0;
+            font-size: 1rem;
+        }
+        
+        .recipe-section {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .recipe-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1a2a6c;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            padding: 8px 10px;
+        }
+        
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+        
+        .diet-content {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+        }
+        
+        .diet-section {
+            margin-bottom: 2rem;
+        }
+        
+        .diet-section h2 {
+            color: #1a2a6c;
+            border-bottom: 2px solid #1a2a6c;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .diet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .diet-card {
+            background: #f8f9ff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .diet-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .diet-card h3 {
+            background: #1a2a6c;
+            color: white;
+            padding: 12px 15px;
+            font-size: 1.1rem;
+        }
+        
+        .diet-card ul {
+            padding: 15px;
+            list-style: none;
+        }
+        
+        .diet-card li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #e0e0e0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .diet-card li:last-child {
+            border-bottom: none;
+        }
+        
+        .diet-card li i {
+            color: #1a2a6c;
+            margin-left: 10px;
+        }
+        
+        @media (max-width: 992px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .nav-menu {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: linear-gradient(135deg, #1a2a6c, #2b5876);
+                width: 80%;
+                height: calc(100vh - 70px);
+                text-align: right;
+                transition: 0.4s;
+                padding: 2rem 0;
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-item {
+                margin: 0.8rem 2rem;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                background: rgba(0,0,0,0.1);
+                margin-top: 5px;
+                animation: none;
+                display: none;
+                width: 100%;
+            }
+            
+            .dropdown-header {
+                background: rgba(0,0,0,0.2);
+                color: white;
+                border-color: rgba(255,255,255,0.1);
+            }
+            
+            .dropdown-item {
+                color: rgba(255,255,255,0.85);
+                border-color: rgba(255,255,255,0.1);
+            }
+            
+            .dropdown-item:hover {
+                background: rgba(255,255,255,0.1);
+                color: white;
+            }
+            
+            .dropdown-icon {
+                transform: rotate(0deg);
+                transition: transform 0.3s;
+            }
+            
+            .has-dropdown.dropdown-active .dropdown-icon {
+                transform: rotate(180deg);
+            }
+            
+            .diet-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-dumbbell"></i>
+                کام اسپرت
+            </a>
+            
+            <ul class="nav-menu">
+                <!-- منوی رژیم و تغذیه با زیرمنوهای کامل -->
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-utensils"></i>
+                        رژیم و تغذیه
+                        <i class="dropdown-icon fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-header">
+                            <i class="fas fa-fire"></i>
+                            برنامه‌های تخصصی
+                        </div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-apple-alt"></i>
+                            کاهش وزن حرفه‌ای
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-dumbbell"></i>
+                            افزایش حجم عضلات
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-heartbeat"></i>
+                            رژیم سلامت محور
+                        </a>
+                        
+                        <div class="dropdown-header">
+                            <i class="fas fa-calculator"></i>
+                            محاسبات تغذیه
+                        </div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-balance-scale"></i>
+                            معدل‌سازی کالری
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-weight"></i>
+                            محاسبه BMI
+                        </a>
+                        
+                        <div class="dropdown-header">
+                            <i class="fas fa-book"></i>
+                            رسپی‌های فیتنس
+                        </div>
+                        
+                        <div class="recipe-section">
+                            <div class="recipe-column">
+                                <div class="dropdown-header" style="background: #e3f2fd; color: #0d47a1;">
+                                    <i class="fas fa-arrow-down"></i>
+                                    کاهش وزن
+                                </div>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-carrot"></i>
+                                    سالاد پروتئینی
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-seedling"></i>
+                                    سوپ چربی‌سوز
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-glass-whiskey"></i>
+                                    اسموتی سبز
+                                </a>
+                            </div>
+                            
+                            <div class="recipe-column">
+                                <div class="dropdown-header" style="background: #fff8e1; color: #f57f17;">
+                                    <i class="fas fa-arrow-up"></i>
+                                    افزایش وزن
+                                </div>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-drumstick-bite"></i>
+                                    شیک پرکالری
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-bread-slice"></i>
+                                    پاستا عضله‌ساز
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-cheese"></i>
+                                    املت حجم‌دهنده
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                <!-- سایر منوها ... -->
+                
+            </ul>
+            
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>سیستم تخصصی رژیم و تغذیه ورزشی</h1>
+        
+        <div class="diet-content">
+            <div class="diet-section">
+                <h2><i class="fas fa-utensils"></i> رسپی‌های فیتنس</h2>
+                <div class="diet-grid">
+                    <!-- بخش کاهش وزن -->
+                    <div class="diet-card">
+                        <h3 style="background: #0d47a1;"><i class="fas fa-arrow-down"></i> کاهش وزن</h3>
+                        <ul>
+                            <li><i class="fas fa-carrot"></i> سالاد پروتئینی با سینه مرغ</li>
+                            <li><i class="fas fa-seedling"></i> سوپ سبزیجات چربی‌سوز</li>
+                            <li><i class="fas fa-glass-whiskey"></i> اسموتی سبز انرژی‌زا</li>
+                            <li><i class="fas fa-fish"></i> ماهی گریل شده با سبزیجات</li>
+                            <li><i class="fas fa-egg"></i> املت سفیده تخم مرغ</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- بخش افزایش وزن -->
+                    <div class="diet-card">
+                        <h3 style="background: #f57f17;"><i class="fas fa-arrow-up"></i> افزایش وزن</h3>
+                        <ul>
+                            <li><i class="fas fa-drumstick-bite"></i> شیک پروتئین پرکالری</li>
+                            <li><i class="fas fa-bread-slice"></i> پاستا با سس گوشت</li>
+                            <li><i class="fas fa-cheese"></i> املت کامل حجم‌دهنده</li>
+                            <li><i class="fas fa-drumstick-bite"></i> مرغ با برنج و لوبیا</li>
+                            <li><i class="fas fa-cheese"></i> پنیرکوتاژ با عسل و مغزیجات</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="diet-section">
+                <h2><i class="fas fa-calculator"></i> محاسبه‌گرهای تخصصی</h2>
+                <div class="diet-grid">
+                    <div class="diet-card">
+                        <h3><i class="fas fa-weight"></i> محاسبه BMI</h3>
+                        <ul>
+                            <li>قد: 180 سانتی‌متر</li>
+                            <li>وزن: 80 کیلوگرم</li>
+                            <li>BMI: 24.7 (نرمال)</li>
+                            <li>محدوده ایده‌آل: 74-82 کیلوگرم</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="diet-card">
+                        <h3><i class="fas fa-burn"></i> کالری مورد نیاز روزانه</h3>
+                        <ul>
+                            <li>سن: 30 سال</li>
+                            <li>قد: 180 سانتی‌متر</li>
+                            <li>وزن: 80 کیلوگرم</li>
+                            <li>فعالیت: متوسط</li>
+                            <li>کالری مورد نیاز: 2800 کالری</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="diet-card">
+                        <h3><i class="fas fa-balance-scale"></i> معدل‌سازی کالری</h3>
+                        <ul>
+                            <li>هدف: افزایش وزن 0.5 کیلو در هفته</li>
+                            <li>کالری فعلی: 2500</li>
+                            <li>کالری جدید: 2800</li>
+                            <li>پروتئین: 160 گرم</li>
+                            <li>کربوهیدرات: 350 گرم</li>
+                            <li>چربی: 80 گرم</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            navItems.forEach(item => {
+                if (item.classList.contains('has-dropdown')) {
+                    item.addEventListener('mouseenter', () => {
+                        item.classList.add('dropdown-active');
+                    });
+                    
+                    item.addEventListener('mouseleave', () => {
+                        item.classList.remove('dropdown-active');
+                    });
+                    
+                    const navLink = item.querySelector('.nav-link');
+                    navLink.addEventListener('click', (e) => {
+                        if (window.innerWidth <= 992) {
+                            e.preventDefault();
+                            item.classList.toggle('dropdown-active');
+                            
+                            navItems.forEach(otherItem => {
+                                if (otherItem !== item) {
+                                    otherItem.classList.remove('dropdown-active');
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+            
+            document.addEventListener('click', (e) => {
+                const isNavItem = e.target.closest('.nav-item');
+                
+                if (!isNavItem && window.innerWidth > 992) {
+                    navItems.forEach(item => {
+                        item.classList.remove('dropdown-active');
+                    });
+                }
+            });
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 992 && !this.closest('.has-dropdown')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

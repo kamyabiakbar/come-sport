@@ -1,0 +1,100 @@
+@media (max-width: 992px) {
+    .hamburger {
+        display: block;
+    }
+    
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: linear-gradient(135deg, #1a2a6c, #2b5876);
+        width: 80%;
+        height: calc(100vh - 70px);
+        text-align: right;
+        transition: 0.4s;
+        padding: 2rem 0;
+        overflow-y: auto;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-item {
+        margin: 0.8rem 2rem;
+        width: 100%;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background: rgba(0,0,0,0.1);
+        margin-top: 5px;
+        animation: none;
+        display: none;
+        width: 100%;
+    }
+    
+    .dropdown-header {
+        background: rgba(0,0,0,0.2);
+        color: white;
+        border-color: rgba(255,255,255,0.1);
+    }
+    
+    .dropdown-subheader {
+        background: rgba(0,0,0,0.15) !important;
+        color: white !important;
+    }
+    
+    .dropdown-item {
+        color: rgba(255,255,255,0.85);
+        border-color: rgba(255,255,255,0.1);
+    }
+    
+    .dropdown-item:hover {
+        background: rgba(255,255,255,0.1);
+        color: white;
+    }
+    
+    .dropdown-icon {
+        transform: rotate(0deg);
+        transition: transform 0.3s;
+    }
+    
+    .has-dropdown.dropdown-active .dropdown-icon {
+        transform: rotate(180deg);
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .page-content {
+        padding: 1.5rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+    }
+    
+    .footer-section {
+        margin-bottom: 25px;
+    }
+}
